@@ -24,9 +24,9 @@ public class Main {
     
     public Main(){
         ui.createUI(ch);
-        vm.showTitleScreen();
-        player.playerDefault();
-        
+        vm.showTitleScreen(); 
+        player.playerDefault(); //This doesn't seem to override any values in the playerPanel1 or playerPanel2. WTF?
+         
     }
     
     public class ChoiceHandler implements ActionListener{

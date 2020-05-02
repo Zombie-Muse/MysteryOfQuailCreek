@@ -9,6 +9,8 @@ package Items;
  *
  * @author xxzom
  */
+
+//weapon class work in progress. This will be superclass, and all weapons will be inherited from this one
 public class Weapon {
     int damage;
     String weaponName;

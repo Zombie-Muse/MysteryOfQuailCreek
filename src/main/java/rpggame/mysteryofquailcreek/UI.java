@@ -88,6 +88,7 @@ public class UI {
         choiceButtonPanel.setLayout(new GridLayout(4, 1));
         window.add(choiceButtonPanel);
         
+        //Buttons for choices
         choice1 = new JButton("choice1");
         choice1.setBackground(Color.black);
         choice1.setForeground(Color.white);
@@ -121,6 +122,7 @@ public class UI {
         choice4.setActionCommand("c4");
         choiceButtonPanel.add(choice4);
         
+        //Player stats panels
         playerPanel1 = new JPanel();
         playerPanel1.setBounds(50, 15, 700, 40);
         playerPanel1.setBackground(Color.black);

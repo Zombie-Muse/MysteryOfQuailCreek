@@ -18,11 +18,14 @@ public class Player {
    
     }
     
+    //Made this to test the effectiveness of changing player panel stats...didn't work
     public void playerDefault(){
         playerHP = 10;
         ui.hpValueLabel.setText("" + playerHP);
     }
     
+    
+    //Main player builder methods from previous version of game and modified for the gui version...doesn;t seem to update player panel values
     public void buildPlayer(){
         
         int hp = diceRoll(10);
@@ -46,6 +49,8 @@ public class Player {
         ui.dexterityValueLabel.setText("" + getPlayerDexterity());
         
     }
+    
+    //takes the highest 3rolls out of 4d6
     public int rollStats(){
     int[] rolls = new int[4];
         int min = 6;
@@ -65,7 +70,9 @@ public class Player {
         stats = sum - min;
         return stats;
     }
-    public String printPlayerStats(){
+    
+    //For previous version of game
+    /*public String printPlayerStats(){
         return "--------------------------------------------------" + "\n" +
                 "HP:            " + getPlayerHP() + "\n" +
                 "Attack:        " + getPlayerAttack() + "\n" +
@@ -73,7 +80,9 @@ public class Player {
                 "Armor Class:   " + getPlayerArmor() + "\n" +
                 "Weapon:        " + getWeaponName() + "\n" +
                 "--------------------------------------------------";
-    }
+    }*/
+    
+    //set/get methods
     public void setPlayerName(String playerName){
         this.playerName = playerName;
     }
@@ -152,6 +161,7 @@ public class Player {
         return playerDexterity;
     }
     
+    //Dice roll method...thanks Chris
     public int diceRoll(int side){
         int roll;
         roll = (int) (Math.random() * side + 1);

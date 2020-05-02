@@ -10,6 +10,8 @@ import rpggame.mysteryofquailcreek.Player;
  *
  * @author xxzom
  */
+
+//example weapon
 public class Weapon_Knife extends Weapon {
     Player player1 = new Player();
     public Weapon_Knife(){

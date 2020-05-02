@@ -20,6 +20,7 @@ public class Story {
         vm = vManage;
     }
     
+    //Story elements were from previous version of game. The choices will be controled differently for current version
     public String intro(){
         return "The sofa is comfortable. After watching hours of Netflix, sleep sounds so good. Your phone slips from your hand as you drift off to sleep. \n"
                 + "You dream of wizards and magic and knights protecting the realm. You dream of a dark cloud rising from the earth. Then the chanting starts. \n"

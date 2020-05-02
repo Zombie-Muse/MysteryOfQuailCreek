@@ -16,6 +16,7 @@ public class VisibilityManager {
         ui = userInterface;
     }
     
+    //Title Screen...obviously
     public void showTitleScreen(){
         ui.titleNamePanel.setVisible(true);
         ui.startButtonPanel.setVisible(true);
@@ -26,6 +27,7 @@ public class VisibilityManager {
         ui.playerPanel2.setVisible(false);
     }
     
+    //Main game screen
     public void gameIntro(){
         ui.titleNamePanel.setVisible(false);
         ui.startButtonPanel.setVisible(false);
