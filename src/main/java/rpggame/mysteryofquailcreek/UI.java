@@ -19,7 +19,7 @@ import rpggame.mysteryofquailcreek.Main.ChoiceHandler;
 
 /**
  *
- * @author xxzom
+ * @author ZomB
  */
 public class UI {
     JFrame window;
@@ -135,7 +135,7 @@ public class UI {
         hpLabel.setForeground(Color.white);
         playerPanel1.add(hpLabel);
         
-        hpValueLabel = new JLabel("11");
+        hpValueLabel = new JLabel();
         hpValueLabel.setFont(playerFont);
         hpValueLabel.setForeground(Color.white);
         playerPanel1.add(hpValueLabel);
@@ -145,7 +145,7 @@ public class UI {
         xpLabel.setForeground(Color.white);
         playerPanel1.add(xpLabel);
         
-        xpValueLabel = new JLabel("520");
+        xpValueLabel = new JLabel();
         xpValueLabel.setFont(playerFont);
         xpValueLabel.setForeground(Color.white);
         playerPanel1.add(xpValueLabel);
@@ -155,7 +155,7 @@ public class UI {
         levelLabel.setForeground(Color.white);
         playerPanel1.add(levelLabel);
         
-        levelValueLabel = new JLabel("2");
+        levelValueLabel = new JLabel();
         levelValueLabel.setFont(playerFont);
         levelValueLabel.setForeground(Color.white);
         playerPanel1.add(levelValueLabel);
@@ -172,7 +172,7 @@ public class UI {
         attackLabel.setForeground(Color.white);
         playerPanel1.add(attackLabel);
         
-        attackValueLabel = new JLabel("10");
+        attackValueLabel = new JLabel();
         attackValueLabel.setFont(playerFont);
         attackValueLabel.setForeground(Color.white);
         playerPanel1.add(attackValueLabel);
@@ -182,7 +182,7 @@ public class UI {
         dexterityLabel.setForeground(Color.white);
         playerPanel1.add(dexterityLabel);
         
-        dexterityValueLabel = new JLabel("10");
+        dexterityValueLabel = new JLabel();
         dexterityValueLabel.setFont(playerFont);
         dexterityValueLabel.setForeground(Color.white);
         playerPanel1.add(dexterityValueLabel);
@@ -192,7 +192,7 @@ public class UI {
         weaponLabel.setForeground(Color.white);
         playerPanel2.add(weaponLabel);
         
-        weaponNameLabel = new JLabel("None");
+        weaponNameLabel = new JLabel();
         weaponNameLabel.setFont(playerFont);
         weaponNameLabel.setForeground(Color.white);
         playerPanel2.add(weaponNameLabel);
@@ -202,7 +202,7 @@ public class UI {
         armorClassLabel.setForeground(Color.white);
         playerPanel2.add(armorClassLabel);
         
-        armorClassValueLabel = new JLabel("None");
+        armorClassValueLabel = new JLabel();
         armorClassValueLabel.setFont(playerFont);
         armorClassValueLabel.setForeground(Color.white);
         playerPanel2.add(armorClassValueLabel);

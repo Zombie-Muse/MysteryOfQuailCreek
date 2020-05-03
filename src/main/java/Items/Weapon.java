@@ -7,7 +7,7 @@ package Items;
 
 /**
  *
- * @author xxzom
+ * @author ZomB
  */
 
 //weapon class work in progress. This will be superclass, and all weapons will be inherited from this one

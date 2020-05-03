@@ -14,8 +14,8 @@ public class Main {
     ChoiceHandler ch = new ChoiceHandler();
     UI ui = new UI();
     VisibilityManager vm = new VisibilityManager(ui);
-    Story story = new Story(this, ui, vm);
     Player player = new Player();
+    Story story = new Story(this, ui, vm, player);
     
     public static void main(String[] args){
         new Main();
@@ -25,7 +25,7 @@ public class Main {
     public Main(){
         ui.createUI(ch);
         vm.showTitleScreen(); 
-        player.playerDefault(); //This doesn't seem to override any values in the playerPanel1 or playerPanel2. WTF?
+        story.playerDefault(); //This doesn't seem to override any values in the playerPanel1 or playerPanel2. WTF?
          
     }
     
@@ -35,7 +35,7 @@ public class Main {
             
             switch (playerChoice){
                 case "Start":
-                    vm.gameIntro();
+                    vm.gameScreen();
                     break;
                 case "c1":
                     break;
@@ -49,14 +49,4 @@ public class Main {
         }
     }
 }
-    
-    /*public Main(){
-       try{ ui.createUI();
-       }
-       catch (Exception e){
-           System.out.print(e);
-       }
-    }*/
-       
-    
 

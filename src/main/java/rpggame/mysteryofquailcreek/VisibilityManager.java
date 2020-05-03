@@ -7,7 +7,7 @@ package rpggame.mysteryofquailcreek;
 
 /**
  *
- * @author xxzom
+ * @author ZomB
  */
 public class VisibilityManager {
     UI ui;
@@ -28,7 +28,7 @@ public class VisibilityManager {
     }
     
     //Main game screen
-    public void gameIntro(){
+    public void gameScreen(){
         ui.titleNamePanel.setVisible(false);
         ui.startButtonPanel.setVisible(false);
         

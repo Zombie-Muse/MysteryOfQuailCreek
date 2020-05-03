@@ -8,7 +8,7 @@ import rpggame.mysteryofquailcreek.Player;
 
 /**
  *
- * @author xxzom
+ * @author ZomB
  */
 
 //example weapon

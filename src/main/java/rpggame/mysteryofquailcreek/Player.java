@@ -7,47 +7,32 @@ package rpggame.mysteryofquailcreek;
 
 /**
  *
- * @author xxzom
+ * @author ZomB
  */
 public class Player {
     String playerName, playerStats, weaponName;
     int playerHP, playerArmor, playerAttack, playerLevel, playerXP, playerDexterity, stats, weaponDamage, armorClass;
-    UI ui = new UI();
+    UI ui;
     
     public Player(){
    
     }
     
-    //Made this to test the effectiveness of changing player panel stats...didn't work
-    public void playerDefault(){
-        playerHP = 10;
-        ui.hpValueLabel.setText("" + playerHP);
-    }
-    
-    
-    //Main player builder methods from previous version of game and modified for the gui version...doesn;t seem to update player panel values
+    //Main player builder methods from previous version of game and modified for the gui version
     public void buildPlayer(){
         
         int hp = diceRoll(10);
-        System.out.println(hp);
         if (hp < 3){
             hp = 3;
         }
         
         setPlayerLevel(1);
         setPlayerXP(0);
-        setWeaponName("nothing");
         setPlayerHP(hp);
         setPlayerAttack(rollStats());
         setPlayerDexterity(rollStats());
         setPlayerArmor(0);
         setWeaponName("None");
-        hp = getPlayerHP();
-        
-        ui.hpValueLabel.setText("wtf");
-        ui.attackValueLabel.setText("" + getPlayerAttack());
-        ui.dexterityValueLabel.setText("" + getPlayerDexterity());
-        
     }
     
     //takes the highest 3rolls out of 4d6

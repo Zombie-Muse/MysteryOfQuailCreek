@@ -7,17 +7,29 @@ package rpggame.mysteryofquailcreek;
 
 /**
  *
- * @author xxzom
+ * @author ZomB
  */
 public class Story {
     Main main;
     UI ui;
     VisibilityManager vm;
+    Player player;
 
-    public Story(Main m, UI userInterface, VisibilityManager vManage){
+    public Story(Main m, UI userInterface, VisibilityManager vManage, Player p1){
         main = m;
         ui = userInterface;
         vm = vManage;
+        player = p1;
+    }
+    
+    //So...setting the default setup in story class seems to work...maybe from constructor above?
+    public void playerDefault(){
+        player.buildPlayer();
+        ui.hpValueLabel.setText("" + player.getPlayerHP());
+        ui.attackValueLabel.setText("" + player.getPlayerAttack());
+        ui.dexterityValueLabel.setText("" + player.getPlayerDexterity());
+        ui.armorClassValueLabel.setText("" + player.getArmorClass());
+        ui.levelValueLabel.setText("" + player.getPlayerLevel());
     }
     
     //Story elements were from previous version of game. The choices will be controled differently for current version
