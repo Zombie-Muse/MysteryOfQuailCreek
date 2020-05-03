@@ -29,7 +29,7 @@ public class UI {
     JButton startButton, choice1, choice2, choice3, choice4;
     JTextArea mainTextArea;
     Font titleFont = new Font("Times New Roman", Font.PLAIN, 50);
-    Font normalFont = new Font("Times New Roman", Font.PLAIN, 26);
+    Font normalFont = new Font("Times New Roman", Font.PLAIN, 18);
     Font playerFont = new Font("Times New Roman", Font.PLAIN, 16);
     
     

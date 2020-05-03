@@ -17,6 +17,8 @@ public class Main {
     Player player = new Player();
     Story story = new Story(this, ui, vm, player);
     
+    String nextChoice1, nextChoice2, nextChoice3, nextChoice4;
+    
     public static void main(String[] args){
         new Main();
             
@@ -24,11 +26,11 @@ public class Main {
     
     public Main(){
         ui.createUI(ch);
-        vm.showTitleScreen(); 
-        story.playerDefault(); //This doesn't seem to override any values in the playerPanel1 or playerPanel2. WTF?
-         
+        story.playerDefault();
+        vm.showTitleScreen();
+        
     }
-    
+    //Handles the choices when clicked
     public class ChoiceHandler implements ActionListener{
         public void actionPerformed(ActionEvent event){
             String playerChoice = event.getActionCommand();
@@ -37,13 +39,13 @@ public class Main {
                 case "Start":
                     vm.gameScreen();
                     break;
-                case "c1":
+                case "c1": story.choice(nextChoice1);
                     break;
-                case "c2":
+                case "c2": story.choice(nextChoice2);
                     break;
-                case "c3":
+                case "c3": story.choice(nextChoice3);
                     break;
-                case "c4":
+                case "c4": story.choice(nextChoice4);
                     break;
             }
         }
