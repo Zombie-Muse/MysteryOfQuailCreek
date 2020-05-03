@@ -17,6 +17,13 @@ public class Weapon {
     
     public Weapon() {
     }
+    
+    public int diceRoll(int side){
+        int roll;
+        roll = (int) (Math.random() * side + 1);
+        return roll;
+    }
+    
     public void setWeaponName(String weaponName){
         this.weaponName = weaponName;
     }
