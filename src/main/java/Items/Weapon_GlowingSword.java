@@ -10,10 +10,8 @@ package Items;
  * @author xxzom
  */
 public class Weapon_GlowingSword extends Weapon{
-    Weapon weapon;
     public Weapon_GlowingSword(){
-        int damage = weapon.diceRoll(10);
-        setWeaponDamage(damage);
-        setWeaponName("Glowing Sword");
+        weaponName = "Glowing Sword";
+        damage = 6;
     }
 }

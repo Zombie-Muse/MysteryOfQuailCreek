@@ -6,7 +6,9 @@
 package rpggame.mysteryofquailcreek;
 
 import Items.Monster;
+import Items.Monster_ChantingWizard;
 import Items.Weapon;
+import Items.Weapon_GlowingSword;
 
 /**
  *
@@ -43,6 +45,8 @@ public class Story {
     public void choice(String nextChoice){
         
         switch(nextChoice){
+            case "title": playerDefault();
+                break;
             case "balcony": balcony();
                 break;
             case "downstairs": downstairs();
@@ -77,9 +81,41 @@ public class Story {
 //                break;
             case "sword": sword();
                 break;
+            case "combat": combat();
+                break;
+            case "attack": attack();
         }
     }
     
+    //Mechanics of certain scenes
+    public void combat(){
+        ui.mainTextArea.setText("You are staring at a " + monster.monsterName + ", and he doesn't look happy. He brings his hands together again as a glow begins to eminate from his hands once again.");
+        
+        ui.choice1.setText("ATTACK");
+        ui.choice2.setText("DEFEND");
+        ui.choice3.setText("RUN");
+        ui.choice4.setText("");
+        
+        main.nextChoice1 = "attack";
+        main.nextChoice2 = "defend";
+        main.nextChoice3 = "run";
+    }
+    
+    public void attack(){
+        int damage;
+        ui.mainTextArea.setText("You swing that glowing sword so hard you closed your eyes and braced for impact...that's not how sword fighting is supposed to work.");
+        savingsThrow = diceRoll(20);
+        if (savingsThrow > monster.monsterArmorClass){
+            damage = diceRoll(weapon.damage);
+            monster.monsterHP = monster.monsterHP - damage;
+            ui.mainTextArea.setText("Surprisingly, you hit the " + monster.monsterName + "and dealt " + damage + " damage." );
+        }
+        else {
+            ui.mainTextArea.setText("You missed...of course");
+        }
+        
+        
+    }
     public int diceRoll(int side){
         int roll;
         roll = (int) (Math.random() * side + 1);
@@ -185,8 +221,8 @@ public class Story {
         ui.mainTextArea.setText("You pick up the glowing sword. Heat radiates through it and into your hand. It's not hot, but comfortable. "
                 + "Apart from it being a glowing sword, there's something special about it.");
         
-//        weaponName = weapon.getWeaponName();
-        ui.weaponNameLabel.setText("Glowing Sword");
+        weapon = new Weapon_GlowingSword();
+        ui.weaponNameLabel.setText("" + weapon.weaponName);
         
         ui.choice1.setText("Go out to the balcony");
         ui.choice2.setText("Go downstairs");
@@ -242,7 +278,7 @@ public class Story {
     }
     
     public void runAway(){
-        ui.mainTextArea.setText("Hebringshis hands together as the glowingorb grows brighter. You turn to run back inside, but you only make it a step towards the door "
+        ui.mainTextArea.setText("He brings his hands together as the glowing orb grows brighter. You turn to run back inside, but you only make it a step towards the door "
                 + "before you get a fireball to the head. In an instant, the bright flash of light flickers as you find yourself floating in an endless void...\n"
                 + "...forever.");
         
@@ -250,10 +286,13 @@ public class Story {
         ui.choice2.setText("");
         ui.choice3.setText("");
         ui.choice4.setText("");
+        
+        main.nextChoice1 = "";
     }
     
     public void dodgeFireball(){
         savingsThrow = diceRoll(100);
+        monster = new Monster_ChantingWizard();
         if (savingsThrow > 40) {
             ui.mainTextArea.setText("As the fireball hurls toward you, you manage to jump out of the way.The fireball connects with your balcony though, exploding it on contact. \n"
                     + "You fall to the ground in a daze. Your wizard neighbor jumps down after you, looking for a fight. You take 1 damage from the fall");
@@ -264,17 +303,20 @@ public class Story {
         }
         else {
                 ui.mainTextArea.setText("The fireball hurls towards you, but you are unable to get out of the way in time. It connects with your chest, sending you flying off the balcony. \n"
-                        + "You fall to the ground with a loud thud. Why are you not dead? You still have a death grip on the glowing sword. It must have absorbed some of the impact. \n"
-                        + "Yourwizard neighbor jumps down after you looking for a fight. You take 2 damage!");
+                        + "You fall to the ground with a loud thud. Why are you not dead? You still have a death grip on the glowing sword. It must have absorbed some of the impact.\n"
+                        + "Your wizard neighbor floats down from above looking for a fight.");
                     
                 playerHP = player.getPlayerHP() - 2;
                 player.setPlayerHP(playerHP);
                 ui.hpValueLabel.setText("" + playerHP);
                     }
-        ui.choice1.setText("");
+        
+        ui.choice1.setText(">>");
         ui.choice2.setText("");
         ui.choice3.setText("");
         ui.choice4.setText("");
+        
+        main.nextChoice1 = "combat";
     }
     
     public void swordDownstairs(){
@@ -284,14 +326,14 @@ public class Story {
     public void sleep(){
         ui.mainTextArea.setText("You go back inside, thinking all of this is too much to handle at the moment. You lay back down on the couch and attempt to fall asleep. "
                 + "The chanting gets louder. The room begins to shake, and in an instant, the entire condo explodes. "
-                + "You find yourself drifting into a dark, endless void...\n"
+                + "You find yourself drifting into a dark, endless void...\n\n"
                 + "...forever.");
         ui.choice1.setText("Start over");
         ui.choice2.setText("");
         ui.choice3.setText("");
         ui.choice4.setText("");
         
-        main.nextChoice1 = "intro";
+        main.nextChoice1 = "title";
     }
     
     public void coupleTalk(){

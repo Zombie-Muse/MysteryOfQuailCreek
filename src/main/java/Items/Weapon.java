@@ -12,31 +12,7 @@ package Items;
 
 //weapon class work in progress. This will be superclass, and all weapons will be inherited from this one
 public class Weapon {
-    int damage;
-    String weaponName;
+    public int damage;
+    public String weaponName;
     
-    public Weapon() {
-    }
-    
-    public int diceRoll(int side){
-        int roll;
-        roll = (int) (Math.random() * side + 1);
-        return roll;
-    }
-    
-    public void setWeaponName(String weaponName){
-        this.weaponName = weaponName;
-    }
-    
-    public String getWeaponName(){
-    return weaponName;    
-    }
-    
-    public void setWeaponDamage(int damage){
-        this.damage = damage;
-    }
-    
-    public int getWeaponDamage(){
-        return damage;
-    }
 }

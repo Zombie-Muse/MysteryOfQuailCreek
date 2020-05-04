@@ -11,14 +11,8 @@ package Items;
  */
 public class Monster_ChantingWizard extends Monster {
     public Monster_ChantingWizard(){
-        monsterHP = 6;
-        monsterDamage = diceRoll(4);
-        
-    }
-    
-    public int diceRoll(int side){
-        int roll;
-        roll = (int) (Math.random() * side + 1);
-        return roll;
+        monsterName = "Chanting Wizard";
+        monsterDamage = 4;
+        monsterArmorClass = 2;
     }
 }

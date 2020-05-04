@@ -13,11 +13,8 @@ import rpggame.mysteryofquailcreek.Player;
 
 //example weapon
 public class Weapon_Knife extends Weapon {
-    Player player1 = new Player();
     public Weapon_Knife(){
-        damage = player1.diceRoll(4);
-        setWeaponDamage(damage);
-        setWeaponName("kitchen knife");
-        
+        weaponName = "Kitchen Knife";
+        damage = 4;
     }
 }

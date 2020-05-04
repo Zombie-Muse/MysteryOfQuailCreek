@@ -31,7 +31,7 @@ public class Player {
         setPlayerHP(hp);
         setPlayerAttack(rollStats());
         setPlayerDexterity(rollStats());
-        setPlayerArmor(0);
+        setPlayerArmor(2);
         setWeaponName("None");
     }
     
