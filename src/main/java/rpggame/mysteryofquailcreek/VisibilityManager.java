@@ -23,8 +23,8 @@ public class VisibilityManager {
         
         ui.mainTextPanel.setVisible(false);
         ui.choiceButtonPanel.setVisible(false);
-        ui.playerPanel1.setVisible(false);
-        ui.playerPanel2.setVisible(false);
+        ui.playerPanel.setVisible(false);
+        ui.monsterPanel.setVisible(false);
     }
     
     //Main game screen
@@ -34,7 +34,18 @@ public class VisibilityManager {
         
         ui.mainTextPanel.setVisible(true);
         ui.choiceButtonPanel.setVisible(true);
-        ui.playerPanel1.setVisible(true);
-        ui.playerPanel2.setVisible(true);
+        ui.playerPanel.setVisible(true);
+        ui.monsterPanel.setVisible(false);
+    }
+    
+    //Combat game screen
+    public void combatScreen(){
+        ui.titleNamePanel.setVisible(false);
+        ui.startButtonPanel.setVisible(false);
+        
+        ui.mainTextPanel.setVisible(true);
+        ui.choiceButtonPanel.setVisible(true);
+        ui.playerPanel.setVisible(true);
+        ui.monsterPanel.setVisible(true);
     }
 }

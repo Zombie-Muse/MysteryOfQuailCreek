@@ -22,8 +22,8 @@ public class Player {
     public void buildPlayer(){
         
         int hp = diceRoll(10);
-        if (hp < 3){
-            hp = 3;
+        if (hp < 5){
+            hp = 5;
         }
         
         setPlayerLevel(1);

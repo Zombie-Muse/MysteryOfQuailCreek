@@ -35,10 +35,10 @@ public class Story {
     public void playerDefault(){
         player.buildPlayer();
         ui.hpValueLabel.setText("" + player.getPlayerHP());
-        ui.attackValueLabel.setText("" + player.getPlayerAttack());
-        ui.dexterityValueLabel.setText("" + player.getPlayerDexterity());
+//        ui.attackValueLabel.setText("" + player.getPlayerAttack());
+//        ui.dexterityValueLabel.setText("" + player.getPlayerDexterity());
         ui.armorClassValueLabel.setText("" + player.getArmorClass());
-        ui.levelValueLabel.setText("" + player.getPlayerLevel());
+//        ui.levelValueLabel.setText("" + player.getPlayerLevel());
         intro();
     }
     //All choices for the game
@@ -79,17 +79,29 @@ public class Story {
 //                break;
 //            case "deflectFireball": deflectFireball();
 //                break;
-            case "sword": sword();
-                break;
             case "combat": combat();
                 break;
-            case "attack": attack();
+            case "sword": sword();
+                break;
+            case "attack": playerAttack();
+                break;
+            case "monsterAttack": monsterAttack();
+                break;
+            case "win": win();
+                break;
+            case "lose": lose();
+                break;
         }
     }
     
     //Mechanics of certain scenes
     public void combat(){
-        ui.mainTextArea.setText("You are staring at a " + monster.monsterName + ", and he doesn't look happy. He brings his hands together again as a glow begins to eminate from his hands once again.");
+        vm.combatScreen();
+        ui.monsterHPValueLabel.setText("" + monster.monsterHP);
+        ui.monsterNameValueLabel.setText(monster.monsterName);
+        ui.monsterArmorValueLabel.setText("" + monster.monsterArmorClass);
+        ui.mainTextArea.setText("You are staring at a " + monster.monsterName + ", and he doesn't look happy...I would say a bit threatening...aggressive even. "
+                + "Yeah, he's definitely going to kill you if you don't do anything.");
         
         ui.choice1.setText("ATTACK");
         ui.choice2.setText("DEFEND");
@@ -101,20 +113,83 @@ public class Story {
         main.nextChoice3 = "run";
     }
     
-    public void attack(){
-        int damage;
-        ui.mainTextArea.setText("You swing that glowing sword so hard you closed your eyes and braced for impact...that's not how sword fighting is supposed to work.");
+    public void playerAttack(){
+//        ui.mainTextArea.setText(monster.monsterName + ": " + monster.monsterHP + " HP\n");
         savingsThrow = diceRoll(20);
-        if (savingsThrow > monster.monsterArmorClass){
-            damage = diceRoll(weapon.damage);
-            monster.monsterHP = monster.monsterHP - damage;
-            ui.mainTextArea.setText("Surprisingly, you hit the " + monster.monsterName + "and dealt " + damage + " damage." );
+        if (savingsThrow > monster.monsterArmorClass) {
+            int playerDamage = diceRoll(weapon.damage);
+            ui.mainTextArea.setText("You attack!! Your " + player.getWeaponName() + " connects with your target and you deal " + playerDamage + " damage");
+            monster.monsterHP = monster.monsterHP - playerDamage;
+            ui.monsterHPValueLabel.setText("" + monster.monsterHP);
+            ui.choice1.setText(">>");
+            ui.choice2.setText("");
+            ui.choice3.setText("");
+            ui.choice4.setText("");
+        
+            main.nextChoice1 = "monsterAttack";
+            if (monster.monsterHP < 1){
+                main.nextChoice1 = "win";
+            }
         }
         else {
-            ui.mainTextArea.setText("You missed...of course");
+            ui.mainTextArea.setText("You miss! This is much harder in real life.");
+            
+            ui.choice1.setText(">>");
+            ui.choice2.setText("");
+            ui.choice3.setText("");
+            ui.choice4.setText("");
+        
+            main.nextChoice1 = "monsterAttack";
         }
+    }
+    
+    public void monsterAttack(){
+//        ui.mainTextArea.setText(monster.monsterName + ": " + monster.monsterHP + " HP\n\n"
+//                + "The " + monster.monsterName + "attacks!");
+        savingsThrow = diceRoll(20);
+        if (savingsThrow > player.getArmorClass()) {
+            int monsterDamage = diceRoll(monster.monsterDamage);
+            ui.mainTextArea.setText(monster.monsterName + " attacks!\nYou're hit! oh, the humanity! You take " + monsterDamage + " damage!");
+            playerHP = player.getPlayerHP() - monsterDamage;
+            player.setPlayerHP(playerHP);
+            ui.hpValueLabel.setText("" + player.getPlayerHP());
+            
+            ui.choice1.setText("ATTACK");
+            ui.choice2.setText("DEFEND");
+            ui.choice3.setText("RUN");
+            ui.choice4.setText("");
         
+            main.nextChoice1 = "attack";
+            main.nextChoice2 = "defend";
+            main.nextChoice3 = "run";
+            if (playerHP < 1){
+                ui.choice1.setText(">>");
+                ui.choice2.setText("");
+                ui.choice3.setText("");
+                ui.choice4.setText("");
+                main.nextChoice1 = "lose";
+            }
+        }
+        else {
+            ui.mainTextArea.setText("The " + monster.monsterName + " misses!");
+            
+            ui.choice1.setText("ATTACK");
+            ui.choice2.setText("DEFEND");
+            ui.choice3.setText("RUN");
+            ui.choice4.setText("");
         
+            main.nextChoice1 = "attack";
+            main.nextChoice2 = "defend";
+            main.nextChoice3 = "run";
+        } 
+    }
+    
+    public void win(){
+        ui.mainTextArea.setText("You win!! But...everything explodes because I haven't coded anything further than this.");
+    }
+    
+    public void lose(){
+        ui.mainTextArea.setText("You lose!! But...everything explodes because I haven't coded anything further than this.");
     }
     public int diceRoll(int side){
         int roll;
@@ -222,6 +297,7 @@ public class Story {
                 + "Apart from it being a glowing sword, there's something special about it.");
         
         weapon = new Weapon_GlowingSword();
+        player.setWeaponName(weapon.weaponName);
         ui.weaponNameLabel.setText("" + weapon.weaponName);
         
         ui.choice1.setText("Go out to the balcony");
@@ -337,7 +413,27 @@ public class Story {
     }
     
     public void coupleTalk(){
+        ui.mainTextArea.setText("You approach the couple outside. They are looking up at your neighbor talking quietly with each other as if not to let anyone know what they are saying.\n "
+                + "You ask what was going on as you try to see what's happening above. ");
+        ui.choice1.setText(">>");
+        ui.choice2.setText("");
+        ui.choice3.setText("");
+        ui.choice4.setText("");
         
+        main.nextChoice1 = "coupleTalkCont";
+    }
+    
+    public void coupleTalkCont(){
+        ui.mainTextArea.setText("“He’s been at this a while. He’s a strange one and is possibly mentally disturbed,” the wife tells you not breaking her gaze from the balcony.\n\n"
+                + "“Have you tried to talk to him,” the husband asks curiously. “I mean, did you knock on his door or anything?");
+        
+        ui.choice1.setText("Go knock on the door");
+        ui.choice2.setText("Go back upstairs to the balcony");
+        ui.choice3.setText("");
+        ui.choice4.setText("");
+        
+        main.nextChoice1 = "knock";
+        main.nextChoice2 = "balcony";
     }
         
 }

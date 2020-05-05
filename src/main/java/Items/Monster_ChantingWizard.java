@@ -12,6 +12,7 @@ package Items;
 public class Monster_ChantingWizard extends Monster {
     public Monster_ChantingWizard(){
         monsterName = "Chanting Wizard";
+        monsterHP = 4;
         monsterDamage = 4;
         monsterArmorClass = 2;
     }

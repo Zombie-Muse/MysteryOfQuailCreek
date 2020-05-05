@@ -23,9 +23,10 @@ import rpggame.mysteryofquailcreek.Main.ChoiceHandler;
  */
 public class UI {
     JFrame window;
-    JPanel titleNamePanel, startButtonPanel, mainTextPanel, mainTextPanelBattle, choiceButtonPanel, playerPanel1, playerPanel2;
+    JPanel titleNamePanel, startButtonPanel, mainTextPanel, mainTextPanelBattle, choiceButtonPanel, monsterPanel, playerPanel;
     JLabel titleNameLabel, hpLabel, hpValueLabel, attackLabel, attackValueLabel, xpLabel, xpValueLabel, levelLabel, levelValueLabel;
     JLabel dexterityLabel, dexterityValueLabel, weaponLabel, weaponNameLabel, armorClassLabel, armorClassValueLabel;
+    JLabel monsterNameLabel,monsterNameValueLabel, monsterHPLabel, monsterHPValueLabel, monsterArmorLabel, monsterArmorValueLabel;
     JButton startButton, choice1, choice2, choice3, choice4;
     JTextArea mainTextArea;
     Font titleFont = new Font("Times New Roman", Font.PLAIN, 50);
@@ -45,7 +46,7 @@ public class UI {
         
         //TITLE SCREEN
         titleNamePanel = new JPanel();
-        titleNamePanel.setBounds(320, 100, 600, 100);
+        titleNamePanel.setBounds(340, 100, 600, 100);
         titleNamePanel.setBackground(Color.black);
         titleNameLabel = new JLabel("The Mystery of Quail Creek");
         titleNameLabel.setForeground(Color.white);
@@ -53,7 +54,7 @@ public class UI {
         titleNamePanel.add(titleNameLabel);
         
         startButtonPanel = new JPanel();
-        startButtonPanel.setBounds(580, 400, 100, 50);
+        startButtonPanel.setBounds(590, 400, 100, 50);
         startButtonPanel.setBackground(Color.black);
         startButton = new JButton("Start");
         startButton.setBackground(Color.black);
@@ -74,7 +75,7 @@ public class UI {
         window.add(mainTextPanel);
         
         mainTextArea = new JTextArea("Main text area!");
-        mainTextArea.setBounds(320, 100, 600, 200);
+        mainTextArea.setBounds(340, 100, 600, 200);
         mainTextArea.setBackground(Color.black);
         mainTextArea.setForeground(Color.white);
         mainTextArea.setFont(normalFont);
@@ -84,7 +85,7 @@ public class UI {
         mainTextPanel.add(mainTextArea);
         
         choiceButtonPanel = new JPanel();
-        choiceButtonPanel.setBounds(460, 400, 400, 150);
+        choiceButtonPanel.setBounds(440, 400, 400, 150);
         choiceButtonPanel.setBackground(Color.white);
         choiceButtonPanel.setLayout(new GridLayout(4, 1));
         window.add(choiceButtonPanel);
@@ -128,89 +129,101 @@ public class UI {
         choiceButtonPanel.add(choice4);
         
         //Player stats panels
-        playerPanel1 = new JPanel();
-        playerPanel1.setBounds(270, 15, 700, 40);
-        playerPanel1.setBackground(Color.black);
-        playerPanel1.setBorder(new LineBorder(Color.white));
-        playerPanel1.setLayout(new GridLayout(1, 6));
-        window.add(playerPanel1);
+        playerPanel = new JPanel();
+        playerPanel.setBounds(290, 15, 700, 40);
+        playerPanel.setBackground(Color.black);
+        playerPanel.setBorder(new LineBorder(Color.white));
+        playerPanel.setLayout(new GridLayout(1, 6));
+        window.add(playerPanel);
         
         hpLabel = new JLabel("HP: ");
         hpLabel.setFont(playerFont);
         hpLabel.setForeground(Color.white);
-        playerPanel1.add(hpLabel);
+        playerPanel.add(hpLabel);
         
         hpValueLabel = new JLabel();
         hpValueLabel.setFont(playerFont);
         hpValueLabel.setForeground(Color.white);
-        playerPanel1.add(hpValueLabel);
-        
-        xpLabel = new JLabel("XP: ");
-        xpLabel.setFont(playerFont);
-        xpLabel.setForeground(Color.white);
-        playerPanel1.add(xpLabel);
-        
-        xpValueLabel = new JLabel();
-        xpValueLabel.setFont(playerFont);
-        xpValueLabel.setForeground(Color.white);
-        playerPanel1.add(xpValueLabel);
-        
-        levelLabel = new JLabel("Level: ");
-        levelLabel.setFont(playerFont);
-        levelLabel.setForeground(Color.white);
-        playerPanel1.add(levelLabel);
-        
-        levelValueLabel = new JLabel();
-        levelValueLabel.setFont(playerFont);
-        levelValueLabel.setForeground(Color.white);
-        playerPanel1.add(levelValueLabel);
-        
-        playerPanel2 = new JPanel();
-        playerPanel2.setBounds(270, 70, 700, 40);
-        playerPanel2.setBackground(Color.black);
-        playerPanel2.setBorder(new LineBorder(Color.white));
-        playerPanel2.setLayout(new GridLayout(1, 6));
-        window.add(playerPanel2);
-        
-        attackLabel = new JLabel("Attack: ");
-        attackLabel.setFont(playerFont);
-        attackLabel.setForeground(Color.white);
-        playerPanel1.add(attackLabel);
-        
-        attackValueLabel = new JLabel();
-        attackValueLabel.setFont(playerFont);
-        attackValueLabel.setForeground(Color.white);
-        playerPanel1.add(attackValueLabel);
-        
-        dexterityLabel = new JLabel("Dexterity: ");
-        dexterityLabel.setFont(playerFont);
-        dexterityLabel.setForeground(Color.white);
-        playerPanel1.add(dexterityLabel);
-        
-        dexterityValueLabel = new JLabel();
-        dexterityValueLabel.setFont(playerFont);
-        dexterityValueLabel.setForeground(Color.white);
-        playerPanel1.add(dexterityValueLabel);
+        playerPanel.add(hpValueLabel);
         
         weaponLabel = new JLabel("Weapon: ");
         weaponLabel.setFont(playerFont);
         weaponLabel.setForeground(Color.white);
-        playerPanel2.add(weaponLabel);
+        playerPanel.add(weaponLabel);
         
         weaponNameLabel = new JLabel();
         weaponNameLabel.setFont(playerFont);
         weaponNameLabel.setForeground(Color.white);
-        playerPanel2.add(weaponNameLabel);
+        playerPanel.add(weaponNameLabel);
         
         armorClassLabel = new JLabel("Armor Class: ");
         armorClassLabel.setFont(playerFont);
         armorClassLabel.setForeground(Color.white);
-        playerPanel2.add(armorClassLabel);
+        playerPanel.add(armorClassLabel);
         
         armorClassValueLabel = new JLabel();
         armorClassValueLabel.setFont(playerFont);
         armorClassValueLabel.setForeground(Color.white);
-        playerPanel2.add(armorClassValueLabel);
+        playerPanel.add(armorClassValueLabel);
+        
+        /*xpLabel = new JLabel("XP: ");
+        xpLabel.setFont(playerFont);
+        xpLabel.setForeground(Color.white);
+        playerPanel.add(xpLabel);
+        
+        xpValueLabel = new JLabel();
+        xpValueLabel.setFont(playerFont);
+        xpValueLabel.setForeground(Color.white);
+        playerPanel.add(xpValueLabel);
+        
+        levelLabel = new JLabel("Level: ");
+        levelLabel.setFont(playerFont);
+        levelLabel.setForeground(Color.white);
+        playerPanel.add(levelLabel);
+        
+        levelValueLabel = new JLabel();
+        levelValueLabel.setFont(playerFont);
+        levelValueLabel.setForeground(Color.white);
+        playerPanel.add(levelValueLabel);
+        */
+        
+        //Monster Stats during combat
+        monsterPanel = new JPanel();
+        monsterPanel.setBounds(290, 70, 700, 40);
+        monsterPanel.setBackground(Color.black);
+        monsterPanel.setBorder(new LineBorder(Color.white));
+        monsterPanel.setLayout(new GridLayout(1, 6));
+        window.add(monsterPanel);
+        
+        monsterNameLabel = new JLabel("Monster: ");
+        monsterNameLabel.setFont(playerFont);
+        monsterNameLabel.setForeground(Color.white);
+        monsterPanel.add(monsterNameLabel);
+        
+        monsterNameValueLabel = new JLabel();
+        monsterNameValueLabel.setFont(playerFont);
+        monsterNameValueLabel.setForeground(Color.white);
+        monsterPanel.add(monsterNameValueLabel);
+        
+        monsterHPLabel = new JLabel("Monster HP: ");
+        monsterHPLabel.setFont(playerFont);
+        monsterHPLabel.setForeground(Color.white);
+        monsterPanel.add(monsterHPLabel);
+        
+        monsterHPValueLabel = new JLabel();
+        monsterHPValueLabel.setFont(playerFont);
+        monsterHPValueLabel.setForeground(Color.white);
+        monsterPanel.add(monsterHPValueLabel);
+        
+        monsterArmorLabel = new JLabel("Monster Armor Class: ");
+        monsterArmorLabel.setFont(playerFont);
+        monsterArmorLabel.setForeground(Color.white);
+        monsterPanel.add(monsterArmorLabel);
+        
+        monsterArmorValueLabel = new JLabel();
+        monsterArmorValueLabel.setFont(playerFont);
+        monsterArmorValueLabel.setForeground(Color.white);
+        monsterPanel.add(monsterArmorValueLabel);
         
         window.setVisible(true);
         
