@@ -30,7 +30,7 @@ public class UI {
     JButton startButton, choice1, choice2, choice3, choice4;
     JTextArea mainTextArea;
     Font titleFont = new Font("Times New Roman", Font.PLAIN, 50);
-    Font normalFont = new Font("Times New Roman", Font.PLAIN, 18);
+    Font normalFont = new Font("Times New Roman", Font.PLAIN, 22);
     Font playerFont = new Font("Times New Roman", Font.PLAIN, 16);
     
     
@@ -85,7 +85,7 @@ public class UI {
         mainTextPanel.add(mainTextArea);
         
         choiceButtonPanel = new JPanel();
-        choiceButtonPanel.setBounds(440, 400, 400, 150);
+        choiceButtonPanel.setBounds(390, 400, 500, 150);
         choiceButtonPanel.setBackground(Color.white);
         choiceButtonPanel.setLayout(new GridLayout(4, 1));
         window.add(choiceButtonPanel);

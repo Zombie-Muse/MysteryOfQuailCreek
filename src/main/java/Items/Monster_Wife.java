@@ -9,12 +9,13 @@ package Items;
  *
  * @author xxzom
  */
-public class Monster_ChantingWizard extends Monster {
-    public Monster_ChantingWizard(){
-        monsterName = "Chanting Wizard";
-        monsterHP = 4;
-        monsterDamage = 4;
-        monsterArmorClass = 2;
-        xpValue = 120;
+public class Monster_Wife extends Monster{
+    public Monster_Wife(){
+        monsterName = "Wife";
+        monsterHP = 5;
+        monsterDamage = 5;
+        monsterArmorClass = 4;
+        xpValue = 160;
     }
+    
 }

@@ -7,14 +7,12 @@ package Items;
 
 /**
  *
- * @author ZomB
+ * @author xxzom
  */
-public class Monster {
-    public String monsterName;
-    public int monsterHP, monsterDamage, monsterArmorClass, xpValue;
-    
-    public Monster(){
-        
+public class Weapon_Shoe extends Weapon {
+    public Weapon_Shoe(){
+        weaponName = "Dirty Old Shoe";
+        damage = 1;
     }
+    
 }
-

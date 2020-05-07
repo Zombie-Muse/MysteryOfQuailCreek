@@ -11,7 +11,7 @@ package rpggame.mysteryofquailcreek;
  */
 public class Player {
     String playerName, playerStats, weaponName;
-    int playerHP, playerArmor, playerAttack, playerLevel, playerXP, playerDexterity, stats, weaponDamage, armorClass;
+    int bonus, playerHP, playerArmor, playerAttack, playerLevel, playerXP, playerDexterity, stats, weaponDamage, armorClass;
     UI ui;
     
     public Player(){
@@ -20,7 +20,6 @@ public class Player {
     
     //Main player builder methods from previous version of game and modified for the gui version
     public void buildPlayer(){
-        
         int hp = diceRoll(10);
         if (hp < 5){
             hp = 5;
@@ -29,10 +28,11 @@ public class Player {
         setPlayerLevel(1);
         setPlayerXP(0);
         setPlayerHP(hp);
-        setPlayerAttack(rollStats());
-        setPlayerDexterity(rollStats());
-        setPlayerArmor(2);
+        setPlayerAttack(rollStats() + rollBonus(playerAttack));
+        setPlayerDexterity(rollStats() + rollBonus(playerDexterity));
+        setArmorClass(2);
         setWeaponName("None");
+        
     }
     
     //takes the highest 3rolls out of 4d6
@@ -54,6 +54,27 @@ public class Player {
         
         stats = sum - min;
         return stats;
+    }
+    
+    public int rollBonus(int attribute){
+        bonus = (attribute - 10) / 2;
+        return bonus;
+    }
+    
+    public void levelUp(){
+        if (playerXP < 100){
+            setPlayerLevel(1);
+        }
+        else if (playerXP < 200){
+            setPlayerLevel(2);
+            setPlayerAttack(getPlayerAttack() + 2);
+            setPlayerDexterity(getPlayerDexterity() + 2);
+        }
+        else if (playerXP < 400){
+            setPlayerLevel(3);
+            setPlayerAttack(getPlayerAttack() + 2);
+            setPlayerDexterity(getPlayerDexterity() + 2);
+        }
     }
     
     //For previous version of game
