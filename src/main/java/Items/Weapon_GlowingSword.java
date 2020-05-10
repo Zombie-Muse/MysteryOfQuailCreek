@@ -11,7 +11,7 @@ package Items;
  */
 public class Weapon_GlowingSword extends Weapon{
     public Weapon_GlowingSword(){
-        weaponName = "Glowing Sword";
-        damage = 6;
+        setWeaponName("Glowing Sword");
+        setDamage(6);
     }
 }

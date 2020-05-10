@@ -11,8 +11,8 @@ package Items;
  */
 public class Weapon_Shoe extends Weapon {
     public Weapon_Shoe(){
-        weaponName = "Dirty Old Shoe";
-        damage = 1;
+        setWeaponName("Old Dirty Shoe");
+        setDamage(1);
     }
     
 }

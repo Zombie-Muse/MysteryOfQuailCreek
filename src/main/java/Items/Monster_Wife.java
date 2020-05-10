@@ -11,11 +11,12 @@ package Items;
  */
 public class Monster_Wife extends Monster{
     public Monster_Wife(){
-        monsterName = "Wife";
-        monsterHP = 5;
-        monsterDamage = 5;
-        monsterArmorClass = 4;
-        xpValue = 160;
+        setMonsterName("Wife");
+        setMonsterHP(5);
+        setMonsterDamage(5);
+        setMonsterArmorClass(4);
+        setMonsterXPValue(160);
+        setMonsterDefenseDifficulty(8);
     }
     
 }

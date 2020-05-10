@@ -14,7 +14,7 @@ import rpggame.mysteryofquailcreek.Player;
 //example weapon
 public class Weapon_Knife extends Weapon {
     public Weapon_Knife(){
-        weaponName = "Kitchen Knife";
-        damage = 4;
+        setWeaponName("Kitchen Knife");
+        setDamage(4);
     }
 }

@@ -130,7 +130,7 @@ public class UI {
         
         //Player stats panels
         playerPanel = new JPanel();
-        playerPanel.setBounds(290, 15, 700, 40);
+        playerPanel.setBounds(40, 15, 1200, 40);
         playerPanel.setBackground(Color.black);
         playerPanel.setBorder(new LineBorder(Color.white));
         playerPanel.setLayout(new GridLayout(1, 6));
@@ -166,7 +166,7 @@ public class UI {
         armorClassValueLabel.setForeground(Color.white);
         playerPanel.add(armorClassValueLabel);
         
-        /*xpLabel = new JLabel("XP: ");
+        xpLabel = new JLabel("XP: ");
         xpLabel.setFont(playerFont);
         xpLabel.setForeground(Color.white);
         playerPanel.add(xpLabel);
@@ -185,11 +185,11 @@ public class UI {
         levelValueLabel.setFont(playerFont);
         levelValueLabel.setForeground(Color.white);
         playerPanel.add(levelValueLabel);
-        */
+        
         
         //Monster Stats during combat
         monsterPanel = new JPanel();
-        monsterPanel.setBounds(290, 70, 700, 40);
+        monsterPanel.setBounds(40, 70, 1200, 40);
         monsterPanel.setBackground(Color.black);
         monsterPanel.setBorder(new LineBorder(Color.white));
         monsterPanel.setLayout(new GridLayout(1, 6));

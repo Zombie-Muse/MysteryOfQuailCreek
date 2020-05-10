@@ -14,5 +14,20 @@ package Items;
 public class Weapon {
     public int damage;
     public String weaponName;
+ 
+    public void setDamage(int damage){
+        this.damage = damage;
+    }
     
+    public int getDamge(){
+        return damage;
+    }
+    
+    public void setWeaponName(String name){
+        this.weaponName = name;
+    }
+    
+    public String getWeaponName(){
+        return weaponName;
+    }
 }

@@ -11,10 +11,54 @@ package Items;
  */
 public class Monster {
     public String monsterName;
-    public int monsterHP, monsterDamage, monsterArmorClass, xpValue;
+    public int monsterHP, monsterDamage, monsterArmorClass, xpValue, monsterDefenseDifficulty;
     
-    public Monster(){
-        
+    public void setMonsterName(String name){
+        this.monsterName = name;
+    }
+    
+    public String getMonsterName(){
+        return monsterName;
+    }
+    
+    public void setMonsterHP(int hp){
+        this.monsterHP = hp;
+    }
+    
+    public int getMonsterHP(){
+        return monsterHP;
+    }
+    
+    public void setMonsterDamage(int damage){
+        this.monsterDamage = damage;
+    }
+    
+    public int getMonsterDamage(){
+        return monsterDamage;
+    }
+    
+    public void setMonsterArmorClass(int ac){
+        this.monsterArmorClass = ac;
+    }
+    
+    public int getMonsterArmorClass(){
+        return monsterArmorClass;
+    }
+    
+    public void setMonsterXPValue(int xp){
+        this.xpValue = xp;
+    }
+    
+    public int getMonsterXPValue(){
+        return xpValue;
+    }
+    
+    public void setMonsterDefenseDifficulty(int difficulty){
+        this.monsterDefenseDifficulty = difficulty;
+    }
+    
+    public int getMonsterDefenseDifficulty(){
+        return monsterDefenseDifficulty;
     }
 }
 

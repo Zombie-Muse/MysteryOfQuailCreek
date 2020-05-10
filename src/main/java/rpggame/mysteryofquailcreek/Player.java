@@ -11,7 +11,7 @@ package rpggame.mysteryofquailcreek;
  */
 public class Player {
     String playerName, playerStats, weaponName;
-    int bonus, playerHP, playerArmor, playerAttack, playerLevel, playerXP, playerDexterity, stats, weaponDamage, armorClass;
+    int bonus, playerHP, playerArmor, playerAttack, playerAttackBonus, playerLevel, playerXP, playerDexterity, playerDexterityBonus, stats, weaponDamage, armorClass;
     UI ui;
     
     public Player(){
@@ -28,8 +28,10 @@ public class Player {
         setPlayerLevel(1);
         setPlayerXP(0);
         setPlayerHP(hp);
-        setPlayerAttack(rollStats() + rollBonus(playerAttack));
-        setPlayerDexterity(rollStats() + rollBonus(playerDexterity));
+        setPlayerAttack(rollStats());
+        setPlayerAttackBonus(rollBonus(getPlayerAttack()));
+        setPlayerDexterity(rollStats());
+        setPlayerDexterityBonus(rollBonus(getPlayerDexterity()));
         setArmorClass(2);
         setWeaponName("None");
         
@@ -72,6 +74,11 @@ public class Player {
         }
         else if (playerXP < 400){
             setPlayerLevel(3);
+            setPlayerAttack(getPlayerAttack() + 2);
+            setPlayerDexterity(getPlayerDexterity() + 2);
+        }
+        else if (playerXP < 800){
+            setPlayerLevel(4);
             setPlayerAttack(getPlayerAttack() + 2);
             setPlayerDexterity(getPlayerDexterity() + 2);
         }
@@ -159,12 +166,28 @@ public class Player {
         return playerAttack;
     }
     
+    public void setPlayerAttackBonus(int attackBonus){
+        this.playerAttackBonus = attackBonus;
+    }
+    
+    public int getPlayerAttackBonus(){
+        return playerAttackBonus;
+    }
+    
     public void setPlayerDexterity(int playerDexterity){
         this.playerDexterity = playerDexterity;
     }
     
     public int getPlayerDexterity(){
         return playerDexterity;
+    }
+    
+    public void setPlayerDexterityBonus(int dexterityBonus){
+        this.playerDexterityBonus = dexterityBonus;
+    }
+    
+    public int getPlayerDexterityBonus(){
+        return playerDexterityBonus;
     }
     
     //Dice roll method...thanks Chris
