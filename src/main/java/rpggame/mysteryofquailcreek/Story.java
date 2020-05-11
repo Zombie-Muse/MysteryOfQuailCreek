@@ -51,102 +51,63 @@ public class Story {
     public void choice(String nextChoice){
         
         switch(nextChoice){
-            case "introCont": introCont();
-                break;
-            case "title": playerDefault();
-                break;
-            case "balcony": balcony();
-                break;
-            case "balconyShoe": balconyShoe();
-                break;
-            case "downstairs": downstairs();
-                break;
-            case "chantingTalk": chantingTalk();
-                break;
-            case "yell": yell();
-                break;
-            case "sleep": sleep();
-                break;
-            case "bedroom": bedroom();
-                break;
-            case "glow": glow();
-                break;
-            case "coupleTalk": coupleTalk();
-                break;
-            case "coupleTalkCont": coupleTalkCont();
-                break;
-            case "coupleTalkAgain": coupleTalkAgain();
-                break;
-            case "coupleFollow": coupleFollow();
-                break;
-            case "knock": knock();
-                break;
-            case "runForHelp": runForHelp();
-                break;
-            case "swordBalcony": swordBalcony();
-                break;
-            case "swordDownstairs": swordDownstairs();
-                break;
-            case "threaten": threaten();
-                break;
-            case "reason": reason();
-                break;
-            case "runAway": runAway();
-                break;
-            case "dodgeFireball": dodgeFireball();
-                break;
-            case "dodgeFireball2": dodgeFireball2();
-                break;
-            case "fireball": fireball();
-                break;
-            case "deflectFireball": deflectFireball();
-                break;
-            case "deflectFireball2": deflectFireball2();
-                break;
-            case "combat": combat();
-                break;
-            case "sword": sword();
-                break;
-            case "attack": combatPlayerAttack();
-                break;
-            case "monsterAttack": combatMonsterAttack();
-                break;
-            case "defend": combatDefend();
-                break;
-            case "run": combatRun();
-                break;
-            case "win": combatWin();
-                break;
-            case "lose": combatLose();
-                break;
-            case "findWeapon": findWeapon();
-                break;
-            case "balconyFight": balconyFight();
-                break;
-            case "kitchen": kitchen();
-                break;
-            case "bedroomHum": bedroomHum();
-                break;
-            case "coupleSword": coupleSword();
-                break;
-            case "helpWife": helpWife();
-                break;
-            case "coupleFight": coupleFight();
-                break;
-            case "reason2": reason2();
-                break;
-            case "apologize": apologize();
-                break;
+            case "introCont": introCont(); break;
+            case "title": playerDefault(); break;
+            case "balcony": balcony(); break;
+            case "balconyShoe": balconyShoe(); break;
+            case "downstairs": downstairs(); break;
+            case "chantingTalk": chantingTalk(); break;
+            case "yell": yell(); break;
+            case "sleep": sleep(); break;
+            case "bedroom": bedroom(); break;
+            case "glow": glow(); break;
+            case "coupleTalk": coupleTalk(); break;
+            case "coupleTalkCont": coupleTalkCont(); break;
+            case "coupleTalkAgain": coupleTalkAgain(); break;
+            case "coupleFollow": coupleFollow(); break;
+            case "coupleGlow": coupleGlow(); break;
+            case "knock": knock(); break;
+            case "runForHelp": runForHelp(); break;
+            case "swordBalcony": swordBalcony(); break;
+            case "swordDownstairs": swordDownstairs(); break;
+            case "threaten": threaten(); break;
+            case "reason": reason(); break;
+            case "runAway": runAway(); break;
+            case "dodgeFireball": dodgeFireball(); break;
+            case "dodgeFireball2": dodgeFireball2(); break;
+            case "fireball": fireball(); break;
+            case "deflectFireball": deflectFireball(); break;
+            case "deflectFireball2": deflectFireball2(); break;
+            case "combat": combat(); break;
+            case "sword": sword(); break;
+            case "attack": combatPlayerAttack(); break;
+            case "monsterAttack": combatMonsterAttack(); break;
+            case "defend": combatDefend(); break;
+            case "run": combatRun(); break;
+            case "win": combatWin(); break;
+            case "lose": combatLose(); break;
+            case "findWeapon": findWeapon(); break;
+            case "balconyFight": balconyFight(); break;
+            case "kitchen": kitchen(); break;
+            case "bedroomHum": bedroomHum(); break;
+            case "coupleSword": coupleSword(); break;
+            case "helpWife": helpWife(); break;
+            case "helpWifeCont": helpWifeCont(); break;
+            case "coupleFight": coupleFight(); break;
+            case "reason2": reason2(); break;
+            case "apologize": apologize(); break;
+            case "apologizeCont": apologizeCont(); break;
+            case "attackAdvantage": combatAttackAdvantage(); break;
         }
     }
     
     //Mechanics of certain scenes
     public void combat(){
         vm.combatScreen();
-        ui.monsterHPValueLabel.setText("" + monster.monsterHP);
-        ui.monsterNameValueLabel.setText(monster.monsterName);
-        ui.monsterArmorValueLabel.setText("" + monster.monsterArmorClass);
-        ui.mainTextArea.setText("You are staring at a " + monster.monsterName + ", and he doesn't look happy...I would say a bit threatening...aggressive even. "
+        ui.monsterHPValueLabel.setText("" + monster.getMonsterHP());
+        ui.monsterNameValueLabel.setText(monster.getMonsterName());
+        ui.monsterArmorValueLabel.setText("" + monster.getMonsterArmorClass());
+        ui.mainTextArea.setText("You are staring at a " + monster.getMonsterName() + ", and he doesn't look happy...I would say a bit threatening...aggressive even. "
                 + "Yeah, he's definitely going to kill you if you don't do something.");
         
         ui.choice1.setText("ATTACK");
@@ -162,26 +123,26 @@ public class Story {
     //combat attack method
     public void combatPlayerAttack(){
         abilityCheckRoll = diceRoll(20);
-        if (abilityCheckRoll > monster.monsterArmorClass) {
-            int playerDamage = diceRoll(weapon.damage);
+        if (abilityCheckRoll > monster.getMonsterArmorClass()) {
+            int playerDamage = diceRoll(weapon.getDamge());
             int playerBonus = player.getPlayerAttackBonus();
             int damage = playerDamage + playerBonus;
             ui.mainTextArea.setText("You attack!! Your " + player.getWeaponName() + " connects with your target and you deal damage:" + playerDamage + " + bonus of: " + playerBonus + " for " + damage + " damage");
-            monster.monsterHP = monster.monsterHP - playerDamage;
-            ui.monsterHPValueLabel.setText("" + monster.monsterHP);
+            monster.setMonsterHP(monster.getMonsterHP() - playerDamage);
+            ui.monsterHPValueLabel.setText("" + monster.getMonsterHP());
             ui.choice1.setText(">>");
             ui.choice2.setText("");
             ui.choice3.setText("");
             ui.choice4.setText("");
         
             main.nextChoice1 = "monsterAttack";
-            if (monster.monsterHP < 1){
+            if (monster.getMonsterHP() < 1){
                 main.nextChoice1 = "win";
                 
             }
         }
         else {
-            ui.mainTextArea.setText("You miss! This is much harder in real life.");
+            ui.mainTextArea.setText("You miss! This is so much harder in real life.");
             
             ui.choice1.setText(">>");
             ui.choice2.setText("");
@@ -196,8 +157,8 @@ public class Story {
     public void combatMonsterAttack(){
         abilityCheckRoll = diceRoll(20);
         if (abilityCheckRoll > player.getArmorClass()) {
-            int monsterDamage = diceRoll(monster.monsterDamage);
-            ui.mainTextArea.setText(monster.monsterName + " attacks!\nYou're hit! Oh, the humanity! You take " + monsterDamage + " damage!");
+            int monsterDamage = diceRoll(monster.getMonsterDamage());
+            ui.mainTextArea.setText(monster.getMonsterName() + " attacks!\nYou're hit! Oh, the humanity! You take " + monsterDamage + " damage!");
             playerHP = player.getPlayerHP() - monsterDamage;
             player.setPlayerHP(playerHP);
             ui.hpValueLabel.setText("" + player.getPlayerHP());
@@ -219,7 +180,7 @@ public class Story {
             }
         }
         else {
-            ui.mainTextArea.setText("The " + monster.monsterName + " misses!");
+            ui.mainTextArea.setText("The " + monster.getMonsterName() + " misses!");
             
             ui.choice1.setText("ATTACK");
             ui.choice2.setText("DEFEND");
@@ -233,11 +194,11 @@ public class Story {
     }
     
     public void combatDefend(){
-        abilityCheck = monster.monsterDefenseDifficulty;
+        abilityCheck = monster.getMonsterDefenseDifficulty();
         abilityCheckRoll = diceRoll(20);
         
         if (abilityCheck < player.getPlayerDexterity() + player.getPlayerDexterityBonus()) {
-            int monsterDamage = diceRoll(monster.monsterDamage) / 2;
+            int monsterDamage = diceRoll(monster.getMonsterDamage()) / 2;
             ui.mainTextArea.setText(monster.monsterName + " attacks!\nYou're hit! Oh, the humanity! You take " + monsterDamage + " damage!");
             playerHP = player.getPlayerHP() - monsterDamage;
             player.setPlayerHP(playerHP);
@@ -260,7 +221,7 @@ public class Story {
             }
         }
         else {
-            ui.mainTextArea.setText("The " + monster.monsterName + " misses!");
+            ui.mainTextArea.setText("The " + monster.getMonsterName() + " misses!");
             
             ui.choice1.setText("ATTACK");
             ui.choice2.setText("DEFEND");
@@ -285,11 +246,52 @@ public class Story {
         main.nextChoice2 = "defend";
     }
     
+    public void combatAttackAdvantage(){
+        monster = new Monster_ChantingWizard();
+        vm.combatScreen();
+        ui.monsterHPValueLabel.setText("" + monster.getMonsterHP());
+        ui.monsterNameValueLabel.setText(monster.getMonsterName());
+        ui.monsterArmorValueLabel.setText("" + monster.getMonsterArmorClass());
+        abilityCheck = 16;
+        abilityCheckRoll = diceRoll(20) + player.getPlayerDexterityBonus();
+        if (abilityCheck < abilityCheckRoll){
+            int playerDamage = diceRoll(weapon.getDamge());
+            int playerBonus = player.getPlayerAttackBonus();
+            int damage = playerDamage + playerBonus;
+            ui.mainTextArea.setText("You leap forward with you " + player.getWeaponName() + " overhead, and come crashing down on the unsuspecting neighbor! You deal " + damage + " damage! "
+                    + "That's gonna leave a mark!");
+            monster.setMonsterHP(monster.getMonsterHP() - damage);
+            
+            ui.choice1.setText("ATTACK");
+            ui.choice2.setText("DEFEND");
+            ui.choice3.setText("");
+            ui.choice4.setText("");
+        
+            main.nextChoice1 = "attack";
+            main.nextChoice2 = "defend";
+        }
+        else {
+            int monsterDamage = diceRoll(monster.getMonsterDamage());
+            ui.mainTextArea.setText("You pounce like a cat attacking it's prey...\n"
+                + "...well, more like a kitten attacking the foot of person climbing the stairs. You leap forward with your " + player.getWeaponName() + " overhead! The neighbor turns"
+                        + "towards you and waves his hand in front of him, sending you flying back with " + monsterDamage + " damage!");
+            player.setPlayerHP(player.getPlayerHP() - monsterDamage);
+            ui.hpValueLabel.setText("" + player.getPlayerHP());
+            
+            ui.choice1.setText("ATTACK");
+            ui.choice2.setText("DEFEND");
+            ui.choice3.setText("");
+            ui.choice4.setText("");
+        
+            main.nextChoice1 = "attack";
+            main.nextChoice2 = "defend";
+        }
+    }
     public void combatWin(){
         int level = player.getPlayerLevel();
         int newLevel;
         ui.mainTextArea.setText("You win!! But...everything explodes because I haven't coded anything further than this.\n");
-        player.setPlayerXP(player.getPlayerXP() + monster.xpValue);
+        player.setPlayerXP(player.getPlayerXP() + monster.getMonsterXPValue());
         
         player.levelUp();
         newLevel = player.getPlayerLevel();
@@ -507,9 +509,10 @@ public class Story {
     }
     
     public void reason2(){
+        monster = new Monster_ChantingWizard();
         if (player.getWeaponName() == "Glowing Sword"){
         ui.mainTextArea.setText("You lower your weapon and raise your free hand in the air in an attempt to look non-threatening. He turns to face you and looks at the glowing "
-                + "sword in your hand. \"The answer!\" he yells, pointing in your direction. You start t think this dude has some serious communication issues. ");
+                + "sword in your hand. \"The answer!\" he yells, pointing in your direction. You start to think this dude has some serious communication issues. ");
             
         ui.choice1.setText(">>");
         ui.choice2.setText("");
@@ -689,7 +692,7 @@ public class Story {
         }
         else {
             ui.mainTextArea.setText("You swing your sword like a baseball bat, striking the fireball before it reaches you. It explodes, sending you flying into the wall!  "
-                    + "In retrospect, you probably should have just gotten outof the way, but hitting a fireball with your sword looksso much cooler! Unfortunately. "
+                    + "In retrospect, you probably should've just gotten out of the way, but hitting a fireball with your sword looks so much cooler! Unfortunately. "
                     + "you take 3 damage. As you regain your composure, you see your neighbor gearing up for another attack.");
             playerHP = player.getPlayerHP() - 3;
             player.setPlayerHP(playerHP);
@@ -862,8 +865,11 @@ public class Story {
     }
     
     public void coupleGlow(){
-        ui.mainTextArea.setText("You go into your bedroom to get a shoe to throw in his direction. Perhaps if you could just break his concentration, he can return to normal..."
-                + "and you can watch some more Netflix. You notice a strange glow emanating from underneath your bed. It looks like the same type of glow from outside.");
+        weapon = new Weapon_GlowingSword();
+        player.setWeaponName(weapon.weaponName);
+        ui.weaponNameLabel.setText("" + weapon.getWeaponName());
+        ui.mainTextArea.setText("You look under your bed and find what appears to be a sword. You remember your grandfather giving this to you on your birthday one year. "
+                + "He told you that it was a very special sword that had been in the family for generations. It never glowed or hummed before, but today is strange.");
         
         ui.choice1.setText("Go help the couple");
         ui.choice2.setText("");
@@ -875,7 +881,7 @@ public class Story {
     }
     
     public void coupleFight(){
-        ui.mainTextArea.setText("You barge into the condo and see your neighbor fighting the wife on the balcony. Her husband lay on the floor of the living room, not moving. "
+        ui.mainTextArea.setText("You barge into the condo and see your neighbor fighting the wife on the balcony. Her husband is laying on the floor of the living room, not moving. "
                 + "A sword is next to him.");
         
         ui.choice1.setText("Swap your weapon with the sword");
@@ -908,9 +914,19 @@ public class Story {
     
     public void helpWife(){
         ui.mainTextArea.setText("There's no time to waste! You bound out toward the balcony heroically as the the neighbor and the wife battle each other! The wife handles the sword "
-                + "like a pro, swinging that thing around like she's a ninja. Unfortunately she finds out that ou shouldn't bring a sword to a fireball fight as she takes fireball to "
-                + "the chast, knocking her off of the balcony to the path below! You might be able to get the jump on the neighbor if you attack now, but he could also turn you into a "
-                + "pile of ashes...choices.");
+                + "like a pro, swinging that thing around like she's a ninja. Unfortunately, she finds out that you shouldn't bring a sword to a fireball fight as she takes fireball to "
+                + "the chest, knocking her off of the balcony to the path below!");
+        
+        ui.choice1.setText(">>");
+        ui.choice2.setText("");
+        ui.choice3.setText("");
+        ui.choice4.setText("");
+        
+        main.nextChoice1 = "helpWifeCont";
+    }
+    
+    public void helpWifeCont(){
+        ui.mainTextArea.setText("You might be able to get the jump on the neighbor if you attack now, but he could also turn you into a pile of ashes...ahh, choices.");
         
         ui.choice1.setText("Sneak attack the wizard neighbor!");
         ui.choice2.setText("Try to reason with him");
@@ -918,12 +934,51 @@ public class Story {
         ui.choice4.setText("");
         
         main.nextChoice1 = "attackAdvantage";
-        main.nextChoice2 = "reason";
+        main.nextChoice2 = "reason2";
         main.nextChoice3 = "apologize";
     }
     
     public void apologize(){
+        ui.mainTextArea.setText("You look at the neighbor, being as still as possible. He turns toward you, fireball hovering in his hand. \"Look,\" you say as you put the sword "
+                + "gently on the floor, \"I just wanted to take a nap. I was...um...concerned for you.\"\n"
+                + "He doesn't look like he's buying it...You could tell by the fireball speeding towards your face.");
+        ui.choice1.setText(">>");
+        ui.choice2.setText("");
+        ui.choice3.setText("");
+        ui.choice4.setText("");
         
+        main.nextChoice1 = "apologizeCont";
+    }
+    
+    public void apologizeCont(){
+        monster = new Monster_ChantingWizard();
+        monster.setMonsterDefenseDifficulty(16);
+        abilityCheck = monster.getMonsterDefenseDifficulty();
+        abilityCheckRoll = diceRoll(20) + player.getPlayerDexterityBonus();
+        if (abilityCheckRoll > abilityCheck){
+            ui.mainTextArea.setText("You instinctively duck and the fireball whizzes past your head. You notice the smell of burnt hair as you grab the " + player.getWeaponName()
+                + "from the floor.");
+            
+            ui.choice1.setText(">>");
+            ui.choice2.setText("");
+            ui.choice3.setText("");
+            ui.choice4.setText("");
+        
+            main.nextChoice1 = "combat";
+        }
+        else {
+            ui.mainTextArea.setText("Unfortunately, your reflexes aren't as good as your gaming skills. You take full force of the fireball to the face. Ouch. After your head disintegrates, "
+                    + "you're left alone, floating in an empty void...\n"
+                    + "...forever.");
+            
+            ui.choice1.setText("Start Over");
+            ui.choice2.setText("");
+            ui.choice3.setText("");
+            ui.choice4.setText("");
+        
+            main.nextChoice1 = "title";
+        }
+        ui.mainTextArea.setText("");
     }
         
 }
