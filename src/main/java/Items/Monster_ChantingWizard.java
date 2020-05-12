@@ -14,7 +14,7 @@ public class Monster_ChantingWizard extends Monster {
         setMonsterName("Chanting Wizard");
         setMonsterHP(5);
         setMonsterDamage(4);
-        setMonsterArmorClass(2);
+        setMonsterArmorClass(10);
         setMonsterXPValue(120);
         setMonsterDefenseDifficulty(12);
     }

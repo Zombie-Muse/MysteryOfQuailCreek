@@ -19,7 +19,7 @@ public class Weapon {
         this.damage = damage;
     }
     
-    public int getDamge(){
+    public int getDamage(){
         return damage;
     }
     

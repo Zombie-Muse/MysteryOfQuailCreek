@@ -32,7 +32,7 @@ public class Player {
         setPlayerAttackBonus(rollBonus(getPlayerAttack()));
         setPlayerDexterity(rollStats());
         setPlayerDexterityBonus(rollBonus(getPlayerDexterity()));
-        setArmorClass(2);
+        setArmorClass(10 + getPlayerDexterityBonus());
         setWeaponName("None");
         
     }

@@ -14,7 +14,7 @@ public class Monster_Wife extends Monster{
         setMonsterName("Wife");
         setMonsterHP(5);
         setMonsterDamage(5);
-        setMonsterArmorClass(4);
+        setMonsterArmorClass(11);
         setMonsterXPValue(160);
         setMonsterDefenseDifficulty(8);
     }

@@ -124,10 +124,10 @@ public class Story {
     public void combatPlayerAttack(){
         abilityCheckRoll = diceRoll(20);
         if (abilityCheckRoll > monster.getMonsterArmorClass()) {
-            int playerDamage = diceRoll(weapon.getDamge());
+            int playerDamage = diceRoll(weapon.getDamage());
             int playerBonus = player.getPlayerAttackBonus();
             int damage = playerDamage + playerBonus;
-            ui.mainTextArea.setText("You attack!! Your " + player.getWeaponName() + " connects with your target and you deal damage:" + playerDamage + " + bonus of: " + playerBonus + " for " + damage + " damage");
+            ui.mainTextArea.setText("You attack!! Your " + player.getWeaponName() + " connects with your target and you deal " + damage + " damage");
             monster.setMonsterHP(monster.getMonsterHP() - playerDamage);
             ui.monsterHPValueLabel.setText("" + monster.getMonsterHP());
             ui.choice1.setText(">>");
@@ -194,11 +194,19 @@ public class Story {
     }
     
     public void combatDefend(){
-        abilityCheck = monster.getMonsterDefenseDifficulty();
-        abilityCheckRoll = diceRoll(20);
+        for (int i = 0; i < 2; i++){
+        int lowest = 20;
+        int roll = diceRoll(20);
+        if (roll < lowest){
+            lowest = roll;
+        }
+        abilityCheck = lowest;
         
-        if (abilityCheck < player.getPlayerDexterity() + player.getPlayerDexterityBonus()) {
-            int monsterDamage = diceRoll(monster.getMonsterDamage()) / 2;
+    }
+        
+        if (abilityCheck > player.getArmorClass()) {
+            
+            int monsterDamage = diceRoll(monster.getMonsterDamage());
             ui.mainTextArea.setText(monster.monsterName + " attacks!\nYou're hit! Oh, the humanity! You take " + monsterDamage + " damage!");
             playerHP = player.getPlayerHP() - monsterDamage;
             player.setPlayerHP(playerHP);
@@ -254,8 +262,8 @@ public class Story {
         ui.monsterArmorValueLabel.setText("" + monster.getMonsterArmorClass());
         abilityCheck = 16;
         abilityCheckRoll = diceRoll(20) + player.getPlayerDexterityBonus();
-        if (abilityCheck < abilityCheckRoll){
-            int playerDamage = diceRoll(weapon.getDamge());
+        if (abilityCheckRoll > abilityCheck){
+            int playerDamage = diceRoll(weapon.getDamage());
             int playerBonus = player.getPlayerAttackBonus();
             int damage = playerDamage + playerBonus;
             ui.mainTextArea.setText("You leap forward with you " + player.getWeaponName() + " overhead, and come crashing down on the unsuspecting neighbor! You deal " + damage + " damage! "
@@ -273,7 +281,7 @@ public class Story {
         else {
             int monsterDamage = diceRoll(monster.getMonsterDamage());
             ui.mainTextArea.setText("You pounce like a cat attacking it's prey...\n"
-                + "...well, more like a kitten attacking the foot of person climbing the stairs. You leap forward with your " + player.getWeaponName() + " overhead! The neighbor turns"
+                + "...well, more like a kitten attacking the foot of person climbing the stairs...more of an annoyance. You leap forward with your " + player.getWeaponName() + " overhead! The neighbor turns"
                         + "towards you and waves his hand in front of him, sending you flying back with " + monsterDamage + " damage!");
             player.setPlayerHP(player.getPlayerHP() - monsterDamage);
             ui.hpValueLabel.setText("" + player.getPlayerHP());
@@ -290,16 +298,16 @@ public class Story {
     public void combatWin(){
         int level = player.getPlayerLevel();
         int newLevel;
-        ui.mainTextArea.setText("You win!! But...everything explodes because I haven't coded anything further than this.\n");
+        ui.mainTextArea.setText("You win!! But...everything explodes because I haven't coded anything further than this.\n\n");
         player.setPlayerXP(player.getPlayerXP() + monster.getMonsterXPValue());
         
         player.levelUp();
         newLevel = player.getPlayerLevel();
-        ui.mainTextArea.append("player XP: " + player.getPlayerXP() + " and player level: " + player.getPlayerLevel() + "\n");
+//        ui.mainTextArea.append("player XP: " + player.getPlayerXP() + " and player level: " + player.getPlayerLevel() + "\n");
         ui.levelValueLabel.setText("" + player.getPlayerLevel());
         ui.xpValueLabel.setText("" + player.getPlayerXP());
         if (newLevel > level){
-            ui.mainTextArea.append("Congratulations! You leveled up!");
+            ui.mainTextArea.append("Congratulations, though! You leveled up!");
         }
         
         ui.choice1.setText("Start Over");
@@ -479,6 +487,18 @@ public class Story {
         main.nextChoice3 = "runAway";
     }
     
+    public void swordDownstairs(){
+        ui.mainTextArea.setText("Why would you go downstairs? I haven't coded this part of the story yet. Go back...off ya go. \n"
+                + "...\n"
+                + "...Go on! Git!");
+        ui.choice1.setText("Pretend like this didn't happen");
+        ui.choice2.setText("");
+        ui.choice3.setText("");
+        ui.choice4.setText("");
+        
+        main.nextChoice1 = "sword";
+    }
+    
     public void threaten(){
         ui.mainTextArea.setText("You raise the sword in front of you. You've never used one, but you've seen movies. Sword fighting seems easy."
                 + "\"Stay back!\" you nervously blurt out.\n"
@@ -577,14 +597,15 @@ public class Story {
     }
     
     public void dodgeFireball2(){
-        abilityCheck = monster.monsterDefenseDifficulty;
+        abilityCheck = diceRoll(20) + player.getPlayerDexterityBonus();
         monster = new Monster_ChantingWizard();
-        if (abilityCheck < player.getPlayerDexterity() + player.getPlayerDexterityBonus()) {
+        if (abilityCheck > 13) {
             ui.mainTextArea.setText("As the fireball hurls toward you, you manage to jump out of the way. The fireball blasts through the wall, sending debris to the walkway below.");  
         }
         else {
                 ui.mainTextArea.setText("The fireball hurls towards you, but you are unable to get out of the way in time. It connects with your chest, sending you flying through the wall "
-                        + "onto the walkway below taking 3 damage. You fall to the ground with a loud thud. Why are you not dead? Your wizard neighbor floats down from above looking for a fight.");
+                        + "onto the walkway below taking 3 damage. You fall to the ground with a loud thud. Why are you not dead? Your wizard neighbor floats down from above looking "
+                        + "for a fight.");
                     
                 playerHP = player.getPlayerHP() - 3;
                 player.setPlayerHP(playerHP);
@@ -597,10 +618,6 @@ public class Story {
         ui.choice4.setText("");
         
         main.nextChoice1 = "combat";
-    }
-    
-    public void swordDownstairs(){
-        
     }
     
     public void fireball(){
@@ -840,7 +857,8 @@ public class Story {
     
     public void kitchen(){
         Weapon weapon = new Weapon_Knife();
-        ui.weaponNameLabel.setText(weapon.weaponName);
+        player.setWeaponName(weapon.getWeaponName());
+        ui.weaponNameLabel.setText(player.getWeaponName());
         ui.mainTextArea.setText("You enter the kitchen looking for a weapon. You grab a kitchen knife from the knife block on the counter. You can still hear the struggle happening next "
                 + "door. You take a deep breath before running next door armed with your knife. ");
         
